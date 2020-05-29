@@ -1,12 +1,23 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <message v-if="showMsg" msg="Vue Lifecycle Hooks"></message>
+    <button @click="showMsg = false">Hide</button>
   </div>
 </template>
+<script>
+import Message from "./components/Message.vue";
+export default {
+  name: "app",
+  components: {
+    Message
+  },
+  data() {
+    return {
+      showMsg: true
+    };
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,15 +26,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
